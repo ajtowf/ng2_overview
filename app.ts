@@ -1,22 +1,14 @@
-import {Component, View, bootstrap, NgFor, NgIf} from 'angular2/angular2';
+import { Aurelia } from 'aurelia-framework'
 import {TodoItem} from 'models'
 
-@Component({
-  selector: 'app'
-})
-@View({
-  templateUrl: 'app.html', directives: [NgFor, NgIf]
-})
-class AppComponent {
+export class App {
   todos: Array<TodoItem>;
+  newTodoText: string;
   
   constructor() {
     this.todos = new Array<TodoItem>();    
     this.todos.push(new TodoItem("Hello world", false));
-  }
-  
-  setCompleted(item: TodoItem, checked: boolean) {
-    item.completed = checked;
+    this.newTodoText = '';
   }
   
   removeTodo(item: TodoItem) {
@@ -25,20 +17,18 @@ class AppComponent {
   
   doneTyping($event) {
     if ($event.which === 13) {
-      this.addTodo($event.target);
+      this.addTodo();
     }
   }
   
-  addTodo(input) {
-    this.todos.push(new TodoItem(input.value, false));
-    input.value = '';
+  addTodo() {
+    this.todos.push(new TodoItem(this.newTodoText, false));
+    this.newTodoText = '';
   }
   
   completeAll() {    
     for (var todo of this.todos) {
-      this.setCompleted(todo, true);
+      todo.completed = true;
     }
   }
 }
-
-bootstrap(AppComponent);

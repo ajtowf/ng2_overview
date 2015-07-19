@@ -17,6 +17,7 @@
     "files": [
         "./app.ts",
         "./models.ts",
-        "./typings/angular2/angular2.d.ts"
+        "./typings/angular2/angular2.d.ts",
+        "./typings/aurelia/aurelia.d.ts"
     ]
 }
