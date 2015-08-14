@@ -1,42 +1,44 @@
 import {Component, View, bootstrap, NgFor, NgIf} from 'angular2/angular2';
+import {formDirectives, FormBuilder, ControlGroup, Control} from 'angular2/angular2';
+import {Validators} from 'angular2/angular2';
 import {TodoItem} from 'models'
 
 @Component({
-  selector: 'app'
+  selector: 'app',
+  viewBindings: [FormBuilder]
 })
 @View({
-  templateUrl: 'app.html', directives: [NgFor, NgIf]
+  templateUrl: 'app.html', directives: [NgFor, NgIf, formDirectives]
 })
 class AppComponent {
   todos: Array<TodoItem>;
   
-  constructor() {
+  myForm: ControlGroup;
+  newTodo: Control;
+  
+  constructor(fb: FormBuilder) {
     this.todos = new Array<TodoItem>();    
     this.todos.push(new TodoItem("Hello world", false));
-  }
-  
-  setCompleted(item: TodoItem, checked: boolean) {
-    item.completed = checked;
+    
+    this.myForm = fb.group({
+        newTodo: ['', Validators.required]
+    });
+    
+    this.newTodo = this.myForm.controls['newTodo'];
   }
   
   removeTodo(item: TodoItem) {
     this.todos.splice(this.todos.indexOf(item), 1);
   }
   
-  doneTyping($event) {
-    if ($event.which === 13) {
-      this.addTodo($event.target);
-    }
-  }
-  
-  addTodo(input) {
-    this.todos.push(new TodoItem(input.value, false));
-    input.value = '';
+  onSubmit() {
+    this.todos.push(new TodoItem(this.newTodo.value, false));    
+    this.newTodo.updateValue('');
   }
   
   completeAll() {    
     for (var todo of this.todos) {
-      this.setCompleted(todo, true);
+      todo.completed = true;
     }
   }
 }
