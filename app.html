@@ -6,10 +6,15 @@
 	<a class="glyphicon glyphicon-remove" click.trigger="$parent.removeTodo(todo)"></a>
 </div>
 
-<div class="form-inline">	
-  <input class="form-control" value.bind="newTodoText" keyup.trigger="doneTyping($event)">
-  <button class="btn btn-primary" click.trigger="addTodo()">Add Todo</button>
-  <button class="btn btn-warning" if.bind="todos.length > 1" click.trigger="completeAll()">Complete All</button>	
-</div>
+<form role="form" submit.delegate="addTodo()" validate.bind="validation">
+	<div class="form-group">
+		<label>New todo</label>
+  		<input class="form-control" value.bind="newTodoText">
+	</div>
+  	<button class="btn btn-primary" type="submit"
+		  disabled.bind="!validation.result.isValid">Add Todo</button>  	
+</form>
+
+<button class="btn btn-warning" if.bind="todos.length > 1" click.trigger="completeAll()">Complete All</button>
 
 </template>

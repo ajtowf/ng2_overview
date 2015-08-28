@@ -1,0 +1,13 @@
+p.aurelia-validation-message {
+  display: inline;
+  margin-left: 5px;
+} 
+p.aurelia-validation-message:empty {
+  display: none;
+}
+.has-success label {
+  color: #3c763d;
+}
+.has-warning label {
+  color: #8a6d3b;
+}

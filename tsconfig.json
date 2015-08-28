@@ -7,7 +7,8 @@
         "noImplicitAny": false,
         "removeComments": true,
         "noLib": false,
-        "emitDecoratorMetadata": true
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true
     },
 
     "filesGlob": [
@@ -17,7 +18,9 @@
     "files": [
         "./app.ts",
         "./models.ts",
+        "./main.ts",
         "./typings/angular2/angular2.d.ts",
-        "./typings/aurelia/aurelia.d.ts"
+        "./typings/aurelia/aurelia.d.ts",
+        "./typings/aurelia/aurelia-validation.d.ts"
     ]
 }
