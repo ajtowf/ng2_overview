@@ -1,5 +1,5 @@
 import {Component, View, bootstrap, NgFor, NgIf} from 'angular2/angular2';
-import {formDirectives, FormBuilder, ControlGroup, Control} from 'angular2/angular2';
+import {FORM_DIRECTIVES, FormBuilder, ControlGroup, Control} from 'angular2/angular2';
 import {Validators} from 'angular2/angular2';
 import {TodoItem} from 'models'
 
@@ -8,7 +8,7 @@ import {TodoItem} from 'models'
   viewBindings: [FormBuilder]
 })
 @View({
-  templateUrl: 'app.html', directives: [NgFor, NgIf, formDirectives]
+  templateUrl: 'app.html', directives: [NgFor, NgIf, FORM_DIRECTIVES]
 })
 class AppComponent {
   todos: Array<TodoItem>;
