@@ -1,17 +1,10 @@
-## AngularJS 2.0 Overview -> Aurelia Overview
+## Angular2 & Aurelia Repos Moved
 
-Code from live coding screencast, first look at angular 2 ported to first look at aurelia 
+## Angular 2 Play
 
-## Setup
+- https://github.com/ajtowf/ng2_play
 
-```
-npm install jspm -g
-jspm install
-```
+## Aurelia Play
 
-If you need more help please google it.
+- https://github.com/ajtowf/aurelia_play
 
-## Links
-
-- Blog @ http://www.towfeek.se/2015/07/angularjs-2-vs-aurelia/
-- Screencast @ https://youtu.be/rd3cLh_wn04
